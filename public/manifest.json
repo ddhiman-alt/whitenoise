@@ -1,0 +1,46 @@
+{
+    "short_name": "WhiteNoise",
+    "name": "WhiteNoise - Focus, Relax & Sleep",
+    "description": "Ambient sounds to help you focus, relax, and sleep better",
+    "icons": [
+        {
+            "src": "favicon.ico",
+            "sizes": "64x64 32x32 24x24 16x16",
+            "type": "image/x-icon"
+        },
+        {
+            "src": "logo192.png",
+            "type": "image/png",
+            "sizes": "192x192",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "logo512.png",
+            "type": "image/png",
+            "sizes": "512x512",
+            "purpose": "any maskable"
+        }
+    ],
+    "start_url": ".",
+    "scope": "/",
+    "display": "standalone",
+    "orientation": "portrait",
+    "theme_color": "#1a1a2e",
+    "background_color": "#1a1a2e",
+    "categories": ["music", "lifestyle", "health"],
+    "shortcuts": [
+        {
+            "name": "Open WhiteNoise",
+            "short_name": "Play",
+            "description": "Start playing ambient sounds",
+            "url": "/",
+            "icons": [{ "src": "logo192.png", "sizes": "192x192" }]
+        }
+    ],
+    "prefer_related_applications": false,
+    "related_applications": [],
+    "handle_links": "preferred",
+    "launch_handler": {
+        "client_mode": "focus-existing"
+    }
+}
