@@ -1,31 +1,15 @@
-# Build stage
-FROM node:18-alpine AS build
+FROM node:22.21.1-bookworm
 
-WORKDIR /app
+RUN apt-get update && apt-get install -y \
+    git \
+    build-essential \
+    bash \
+    --no-install-recommends && rm -rf /var/lib/apt/lists/*
 
-# Copy package files
-COPY package*.json ./
+WORKDIR /testbed
 
-# Install dependencies
-RUN npm ci --silent
+RUN git clone https://nova.teachx.ai/ddhiman/whitenoise.git .
 
-# Copy source code
-COPY . .
+RUN npm ci
 
-# Build the app
-RUN npm run build
-
-# Production stage
-FROM nginx:alpine
-
-# Copy custom nginx config
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-
-# Copy built assets from build stage
-COPY --from=build /app/build /usr/share/nginx/html
-
-# Expose port 80
-EXPOSE 80
-
-# Start nginx
-CMD ["nginx", "-g", "daemon off;"]
+RUN chmod -R 777 /testbed
